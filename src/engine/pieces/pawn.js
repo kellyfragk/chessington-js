@@ -14,6 +14,10 @@ export default class Pawn extends Piece {
     let position = [];
 
     if (this.player === Player.WHITE) {
+      if (pawnPos.row === 7) {
+        return position;
+      }
+
       position = [Square.at(pawnPos.row + 1, pawnPos.col)];
 
       if (pawnPos.row === 1) {
@@ -21,14 +25,16 @@ export default class Pawn extends Piece {
       }
     }
 
-    if (
-      this.player === Player.BLACK &&
-      board.getPiece(Square.at(pawnPos.row - 1, pawnPos.col)) !== undefined
-    ) {
-      return position;
-    }
-
     if (this.player === Player.BLACK) {
+      if (pawnPos.row === 0) {
+        return position;
+      }
+      if (
+        board.getPiece(Square.at(pawnPos.row - 1, pawnPos.col)) !== undefined
+      ) {
+        return position;
+      }
+
       position = [Square.at(pawnPos.row - 1, pawnPos.col)];
 
       if (

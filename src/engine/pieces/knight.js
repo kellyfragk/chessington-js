@@ -52,6 +52,18 @@ export default class Knight extends Piece {
       position.push(Square.at(knightPos.row - 1, knightPos.col - 2));
     }
 
+    if (knightPos.row === 0) {
+      if (knightPos.col > 0) {
+        position.push(Square.at(knightPos.row + 2, knightPos.col - 1));
+      }
+      if (knightPos.col < GameSettings.BOARD_SIZE - 1) {
+        position.push(Square.at(knightPos.row + 2, knightPos.col + 1));
+      }
+      if (knightPos.col === 0) {
+        position.push(Square.at(knightPos.row + 1, knightPos.col + 2));
+      }
+    }
+
     return position;
   }
 }
