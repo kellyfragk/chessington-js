@@ -12,7 +12,7 @@ export default class Bishop extends Piece {
     const bishopPos = board.findPiece(this);
     let position = [];
 
-    Diagonally.move(bishopPos, position);
+    Diagonally.move(bishopPos, position, board);
 
     return position;
   }

@@ -16,7 +16,7 @@ export default class Queen extends Piece {
 
     Laterally.move(queenPos, position, board);
 
-    Diagonally.move(queenPos, position);
+    Diagonally.move(queenPos, position, board);
 
     return position;
   }
