@@ -11,7 +11,7 @@ export default class Pawn extends Piece {
   getAvailableMoves(board) {
     const pawnPos = board.findPiece(this);
 
-    let position;
+    let position = [];
 
     if (this.player === Player.WHITE) {
       position = [Square.at(pawnPos.row + 1, pawnPos.col)];
@@ -21,11 +21,22 @@ export default class Pawn extends Piece {
       }
     }
 
+    if (
+      this.player === Player.BLACK &&
+      board.getPiece(Square.at(pawnPos.row - 1, pawnPos.col)) !== undefined
+    ) {
+      return position;
+    }
+
     if (this.player === Player.BLACK) {
       position = [Square.at(pawnPos.row - 1, pawnPos.col)];
 
-      if (pawnPos.row === 6) {
+      if (
+        pawnPos.row === 6 &&
+        board.getPiece(Square.at(pawnPos.row - 2, pawnPos.col)) === undefined
+      ) {
         position.push(Square.at(pawnPos.row - 2, pawnPos.col));
+        console.log(position);
       }
     }
 
