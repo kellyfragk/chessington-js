@@ -1,6 +1,7 @@
 import Piece from "./piece";
 import Square from "../../../src/engine/square";
 import Player from "../../../src/engine/player";
+import Board from "../../../src/engine/board";
 
 export default class Pawn extends Piece {
   constructor(player) {
@@ -8,12 +9,26 @@ export default class Pawn extends Piece {
   }
 
   getAvailableMoves(board) {
+    const pawnPos = board.findPiece(this);
+
     let position;
+
     if (this.player === Player.WHITE) {
-      position = new Array(Square.at(1, 0));
-    } else {
-      position = new Array(Square.at(6, 7));
+      position = [Square.at(pawnPos.row + 1, pawnPos.col)];
+
+      if (pawnPos.row === 1) {
+        position.push(Square.at(pawnPos.row + 2, pawnPos.col));
+      }
     }
+
+    if (this.player === Player.BLACK) {
+      position = [Square.at(pawnPos.row - 1, pawnPos.col)];
+
+      if (pawnPos.row === 6) {
+        position.push(Square.at(pawnPos.row - 2, pawnPos.col));
+      }
+    }
+
     return position;
   }
 }
