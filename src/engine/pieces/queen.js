@@ -14,7 +14,7 @@ export default class Queen extends Piece {
 
     let position = [];
 
-    Laterally.move(queenPos, position);
+    Laterally.move(queenPos, position, board);
 
     Diagonally.move(queenPos, position);
 

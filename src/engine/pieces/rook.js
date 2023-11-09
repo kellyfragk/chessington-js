@@ -14,7 +14,7 @@ export default class Rook extends Piece {
 
     let position = [];
 
-    Laterally.move(rookPos, position);
+    Laterally.move(rookPos, position, board);
     return position;
   }
 }

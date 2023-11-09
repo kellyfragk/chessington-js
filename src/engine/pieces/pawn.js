@@ -36,7 +36,6 @@ export default class Pawn extends Piece {
         board.getPiece(Square.at(pawnPos.row - 2, pawnPos.col)) === undefined
       ) {
         position.push(Square.at(pawnPos.row - 2, pawnPos.col));
-        console.log(position);
       }
     }
 
