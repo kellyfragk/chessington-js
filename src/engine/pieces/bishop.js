@@ -1,6 +1,7 @@
 import Piece from "./piece";
 import Square from "../square";
 import GameSettings from "../../../src/engine/gameSettings";
+import Diagonally from "../moves/diagonally";
 
 export default class Bishop extends Piece {
   constructor(player) {
@@ -11,18 +12,7 @@ export default class Bishop extends Piece {
     const bishopPos = board.findPiece(this);
     let position = [];
 
-    for (let i = 1; i < GameSettings.BOARD_SIZE - bishopPos.col; i++) {
-      position.push(Square.at(bishopPos.row + i, bishopPos.col + i));
-    }
-
-    for (let i = 1; i < bishopPos.col + 1; i++) {
-      position.push(Square.at(bishopPos.row + i, bishopPos.col - i));
-    }
-
-    for (let i = 1; i < bishopPos.row + 1; i++) {
-      position.push(Square.at(bishopPos.row - i, bishopPos.col - i));
-      position.push(Square.at(bishopPos.row - i, bishopPos.col + i));
-    }
+    Diagonally.move(bishopPos, position);
 
     return position;
   }
