@@ -40,6 +40,8 @@ describe("Bishop", () => {
 
     const moves = bishop.getAvailableMoves(board);
 
+    console.log(moves);
+
     moves.should.have.length(11);
   });
 
